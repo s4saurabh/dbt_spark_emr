@@ -226,3 +226,7 @@ You should see an application submitted to the EMR cluster
 Go to Athena and check the tables and data
 
 <img src="img/image-3.png" width="750">
+
+You have successfully completed the lab. 
+
+Explore various options provided by DBT Spark plugin <a href="https://github.com/fishtown-analytics/dbt-spark">here</a>
