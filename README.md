@@ -209,7 +209,7 @@ cd models
 rm -rf examples
 ```
 
-Copy the model files:
+Copy the model files:<br/>
 <a href="cloudtrail_exploded.sql">cloudtrail_exploded.sql</a>
 <a href="requests_by_eventsource.sql">requests_by_eventsource.sql</a>
 
