@@ -204,12 +204,14 @@ models:
 * Change models from my_new_project to dbt_spark_demo (this value needs to match with the name of the project configured right above)
 * Change profile from default to emr_spark_out. This is the name of the profile set in the profiles.yml file in the previous step.
 
+```
 cd models
 rm -rf examples
+```
 
 Copy the model files:
-cloudtrail_exploded.sql
-requests_by_eventsource.sql
+<a href="cloudtrail_exploded.sql">cloudtrail_exploded.sql</a>
+<a href="requests_by_eventsource.sql">requests_by_eventsource.sql</a>
 
 **Run DBT**
 
