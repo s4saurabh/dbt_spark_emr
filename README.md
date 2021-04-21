@@ -79,7 +79,7 @@ LOCATION 's3://cloudtrail-awslogs-xxx/AWSLogs/xxx/'
 
 ```
 alter TABLE cloudtrail_raw.cloudtrail_event ADD PARTITION (region='us-east-1', dt='2021-03-01')
-LOCATION 's3://cloudtrail-awslogs-878313339005-9kqgtue4-isengard-do-not-delete/AWSLogs/878313339005/CloudTrail/us-east-1/2021/03/01/'
+LOCATION 's3://cloudtrail-awslogs-xxx-/AWSLogs/xxx/CloudTrail/us-east-1/2021/03/01/'
 ```
 
 ```
@@ -210,8 +210,8 @@ rm -rf examples
 ```
 
 Copy the model files:<br/>
-<a href="cloudtrail_exploded.sql">cloudtrail_exploded.sql</a>
-<a href="requests_by_eventsource.sql">requests_by_eventsource.sql</a>
+<a href="cloudtrail_exploded.sql">cloudtrail_exploded.sql</a> - In this model we will explode the cloudtrail logs and extract few fields. The output will be saved in Parquet format and partitioned by region and dt.<br/>
+<a href="requests_by_eventsource.sql">requests_by_eventsource.sql</a> - In this model we will create a report that should eventSource, date the count of eventSource. The output will be saved in Parquet format and partitioned by dt.
 
 **Run DBT**
 
