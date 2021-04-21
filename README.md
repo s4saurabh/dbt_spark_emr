@@ -1,7 +1,7 @@
 # dbt_spark_emr
 DBT Spark with EMR
 
-In this lab we will install DBT on an EC2 instance and use it to submit jobs to EMR cluster. DBT will communicate with Spark SQL Thrift Server which will be used to submit the jobs from DBT to EMR cluster. As part of DBT models we will read data from CloudTrail logs S3 bucket, explode the logs and then generate a report to track the requests from eventSource by date. Finally we will use Athena to query the data using Glue Data Catalog.
+In this lab we will install DBT on an EC2 instance along with  <a href="https://github.com/fishtown-analytics/dbt-spark">DBT Spark plugin</a> and use it to submit jobs to EMR cluster. DBT will communicate with Spark SQL Thrift Server which will be used to submit the jobs from DBT to EMR cluster. As part of DBT models we will read data from CloudTrail logs S3 bucket, explode the logs and then generate a report to track the requests from eventSource by date. Finally we will use Athena to query the data using Glue Data Catalog.
 
 **Architecture**
 
