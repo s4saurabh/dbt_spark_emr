@@ -1,7 +1,7 @@
 # dbt_spark_emr
 DBT Spark with EMR
 
-In this lab we will install DBT on an EC2 instance and use it to submit jobs to EMR cluster.
+In this lab we will install DBT on an EC2 instance and use it to submit jobs to EMR cluster. DBT will communicate with Spark SQL Thrift Server which will be used to submit the jobs from DBT to EMR cluster. 
 
 **Architecture**
 
@@ -86,10 +86,17 @@ LOCATION 's3://cloudtrail-awslogs-878313339005-9kqgtue4-isengard-do-not-delete/A
 CREATE DATABASE dbt_demo_out LOCATION 's3://dbt-output/'
 ```
 
-Launch an EMR Cluster with Spark, select Glue as the metastore for Spark
+Launch an EMR Cluster with Spark, select Glue as the metastore for Spark. We will also run a Step on the EMR cluster to start the Spark Thrift Server.
 
 ```
-aws emr create-cluster --name SparkSQL --use-default-roles \--release-label emr-6.1.0 \--instance-type m4.large --instance-count 2 \--applications Name=Spark \--ec2-attributes KeyName=my_ec2_ssh_key \--log-uri s3://my_emr_log_bucket/emr_logs/ \--tags Project=dbt_demo \--steps Name="Start Thrift Server",Jar=command-runner.jar,Args=sudo,/usr/lib/spark/sbin/start-thriftserver.sh--configurations file://configurations.json
+aws emr create-cluster --name SparkSQL \
+--use-default-roles \--release-label emr-6.1.0 
+\--instance-type m4.large --instance-count 2 
+\--applications Name=Spark 
+\--ec2-attributes KeyName=my_ec2_ssh_key 
+\--log-uri s3://my_emr_log_bucket/emr_logs/ 
+\--tags Project=dbt_demo 
+\--steps Name="Start Thrift Server",Jar=command-runner.jar,Args=sudo,/usr/lib/spark/sbin/start-thriftserver.sh--configurations file://configurations.json
 ```
 
 **configurations.json**
